@@ -2,7 +2,7 @@ package me.StevenLawson.TotalFreedomMod.Commands;
 
 public enum AdminLevel
 {
-    ALL("All Player Commands"), OP("OP Commands"), SUPER("SuperAdmin Commands"), SENIOR("Senior Admin Commands");
+    ALL("All Player Commands"), OP("OP Commands"), SUPER("SuperAdmin Commands"), SENIOR("Senior Admin Commands"), SYSADMIN("System Admin Admin Commands");
     //
     private final String friendlyName;
 
