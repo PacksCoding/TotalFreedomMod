@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandPermissions(level = AdminLevel.SENIOR, source = SourceType.BOTH)
+@CommandPermissions(level = AdminLevel.SYSADMIN, source = SourceType.BOTH)
 @CommandParameters(
         description = "A command for system admins only",
         usage = "/<command> [add <player> | del <player> | teston | testoff]")
