@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 @CommandPermissions(level = AdminLevel.SUPER, source = SourceType.BOTH)
 @CommandParameters(
         description = "Tell an imposter to verify.",
-        usage = "/<command> <name> ]")
+        usage = "/<command> <name>")
 public class Command_verify extends TFM_Command
 {
     @Override
