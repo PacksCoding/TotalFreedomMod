@@ -47,7 +47,11 @@ public class TFM_Util
 {
     private static final Map<String, Integer> ejectTracker = new HashMap<String, Integer>();
     public static final Map<String, EntityType> mobtypes = new HashMap<String, EntityType>();
-    public static final List<String> DEVELOPERS = Arrays.asList("Madgeek1450", "DarthSalamon", "AcidicCyanide", "wild1145", "WickedGamingUK", "xXWilee999Xx");
+    public static final List<String> DEVELOPERS = Arrays.asList("Madgeek1450", "DarthSalamon", "AcidicCyanide", "wild1145", "WickedGamingUK", "xXWilee999Xx", "Jason1712445", "boomy46", "kieran3810");
+    public static final List<String> SYSADMINS = Arrays.asList("packeretteswan", "Citisma", "herobrian35", "Vilak");
+    public static final List<String> EXECUTIVES = Arrays.asList();
+    public static final List<String> HSRAS = Arrays.asList("Elephants111");
+    public static final List<String> MASTERBUILDERS = Arrays.asList("ryandw11");     
     private static final Random RANDOM = new Random();
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
     public static final Map<String, ChatColor> CHAT_COLOR_NAMES = new HashMap<String, ChatColor>();
@@ -138,7 +142,7 @@ public class TFM_Util
 
     public static void adminAction(String adminName, String action, boolean isRed)
     {
-        TFM_Util.bcastMsg(adminName + " - " + action, (isRed ? ChatColor.RED : ChatColor.AQUA));
+        TFM_Util.bcastMsg(adminName + " > " + action, (isRed ? ChatColor.RED : ChatColor.AQUA));
     }
 
     public static String getIp(OfflinePlayer player)
@@ -883,18 +887,69 @@ public class TFM_Util
         }
     }
 
-    public static void adminChatMessage(CommandSender sender, String message, boolean senderIsConsole)
+   public static void adminChatMessage(CommandSender sender, String message, boolean senderIsConsole)
     {
-        String name = sender.getName() + " " + TFM_PlayerRank.fromSender(sender).getPrefix() + ChatColor.WHITE;
-        TFM_Log.info("[ADMIN] " + name + ": " + message);
+        String name = sender.getName() + " " + getPrefix(sender, senderIsConsole);
+        TFM_Log.info("[AdminChat] " + name + ": " + message);
 
-        for (Player player : Bukkit.getOnlinePlayers())
+        for (Player p : Bukkit.getOnlinePlayers())
         {
-            if (TFM_AdminList.isSuperAdmin(player))
+            if (TFM_AdminList.isSuperAdmin(p))
             {
-                player.sendMessage("[" + ChatColor.AQUA + "ADMIN" + ChatColor.WHITE + "] " + ChatColor.DARK_RED + name + ": " + ChatColor.AQUA + message);
+                p.sendMessage("[" + ChatColor.GRAY + "AdminChat" + ChatColor.GRAY + "] " + ChatColor.DARK_RED
+                        + name + ": " + ChatColor.AQUA + message);
             }
         }
+    }
+
+    public static String getPrefix(CommandSender sender, boolean senderIsConsole)
+    {
+        String prefix;
+        if (senderIsConsole)
+        {
+            prefix = ChatColor.BLUE + "(Console)";
+        }
+        else
+        {
+            if (TFM_AdminList.isSeniorAdmin(sender))
+            {
+                prefix = ChatColor.LIGHT_PURPLE + "(SrA)";
+            }
+            if (TFM_AdminList.isTelnetAdmin(sender))
+            {
+                prefix = ChatColor.LIGHT_PURPLE + "(SrA)";
+            }
+            else
+            {
+                prefix = ChatColor.GOLD + "(SA)";
+            }
+            if (DEVELOPERS.contains(sender.getName()))
+            {
+                prefix = ChatColor.DARK_PURPLE + "(Dev)";
+            }
+            if (EXECUTIVES.contains(sender.getName()))
+            {
+                prefix = ChatColor.RED + "(Executive)";
+            }
+            if (HSRAS.contains(sender.getName()))
+            {
+                prefix = ChatColor.LIGHT_PURPLE + "(Honorary SrA)";
+            }
+            if (MASTERBUILDERS.contains(sender.getName()))
+            {
+                prefix = ChatColor.DARK_BLUE + "(MasterBuilder)";
+            }
+            if (sender.getName().equalsIgnoreCase("kieran3810"))
+            {
+                prefix = ChatColor.DARK_PURPLE + "(Lead Dev)";
+            }
+            if (sender.getName().equalsIgnoreCase("packeretteswan"))
+            {
+                prefix = ChatColor.DARK_GREEN + "(Sys-Admin)";
+            }
+
+        }
+        return prefix + ChatColor.WHITE;
     }
 
     //getField: Borrowed from WorldEdit
