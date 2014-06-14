@@ -8,17 +8,21 @@ import org.bukkit.entity.Player;
 
 public enum TFM_PlayerRank
 {
-    DEVELOPER("a " + ChatColor.DARK_PURPLE + "Developer", ChatColor.DARK_PURPLE + "[Dev]"),
+    DEVELOPER("a " + ChatColor.DARK_PURPLE + "Developer", ChatColor.DARK_PURPLE + "(Dev)"),
     IMPOSTOR("an " + ChatColor.YELLOW + ChatColor.UNDERLINE + "Impostor", ChatColor.YELLOW.toString() + ChatColor.UNDERLINE + "[IMP]"),
     NON_OP("a " + ChatColor.GREEN + "Non-OP", ChatColor.GREEN.toString()),
-    OP("an " + ChatColor.RED + "OP", ChatColor.RED + "[OP]"),
-    SUPER("a " + ChatColor.GOLD + "Super Admin", ChatColor.GOLD + "[SA]"),
-    TELNET("a " + ChatColor.DARK_GREEN + "Super Telnet Admin", ChatColor.DARK_GREEN + "[STA]"),
-    SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "[SrA]"),
-    OWNER("the " + ChatColor.BLUE + "Owner", ChatColor.BLUE + "[Owner]"),
-    CONSOLE("The " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
-    private String loginMessage;
+    OP("an " + ChatColor.RED + "OP", ChatColor.RED + "(OP)"),
+    SUPER("a " + ChatColor.GOLD + "Super Admin", ChatColor.GOLD + "(SA)"),
+    TELNET("a " + ChatColor.DARK_GREEN + "Super Telnet Admin", ChatColor.DARK_GREEN + "(STA)"),
+    SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "(SrA)"),
+    OWNER("the " + ChatColor.BLUE + "Owner", ChatColor.BLUE + "(Owner)"),
+    CONSOLE("The " + ChatColor.BLUE + "Console", ChatColor.BLUE + "(Console)"),
+    EXECUTIVE("an " + ChatColor.RED + "Executive", ChatColor.RED + "(Executive)"),
+    SYSADMIN("a " + ChatColor.DARK_GREEN + "System Admin", ChatColor.DARK_GREEN + "(Sys-Admin)"),
+    MASTERBUILDER("a " + ChatColor.DARK_BLUE + "MasterBuilder", ChatColor.DARK_BLUE + "(MasterBuilder)"),
+    HSRA("an " + ChatColor.LIGHT_PURPLE + "Honorary Senior Admin", ChatColor.LIGHT_PURPLE + "(Honorary SrA)");
     private String prefix;
+    private String loginMessage;
 
     private TFM_PlayerRank(String loginMessage, String prefix)
     {
@@ -77,10 +81,51 @@ public enum TFM_PlayerRank
 
         if (entry != null && entry.isActivated())
         {
-            if (TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
+            if (sender.getName().equals("packeretteswan"))
             {
-                return OWNER;
+                return SYSADMIN;
             }
+             if (sender.getName().equals("Citisma"))
+            {
+                return SYSADMIN;
+            }        
+              if (sender.getName().equals("RedSea11001"))
+            {
+                return MASTERBUILDER;
+            }     
+              if (sender.getName().equals("Elephants111"))
+            {
+                return HSRA;
+            }
+              if (sender.getName().equals("amanshafeeq123"))
+            {
+                return MASTERBUILDER;
+            }  
+              if (sender.getName().equals("Jason1712445"))
+            {
+                return DEVELOPER;
+            }
+              if (sender.getName().equals("ryandw11"))
+            {
+                return MASTERBUILDER;
+            }
+              if (sender.getName().equals("boomy46"))
+            {
+                return DEVELOPER;
+            } 
+              if (sender.getName().equals("kieran3810"))
+            {
+                return DEVELOPER;
+            }
+              if (sender.getName().equals("Vilak"))
+            {
+                return SYSADMIN;
+            }
+              if (sender.getName().equals("herobrian35"))
+            {
+                return SYSADMIN;
+            }
+               
 
             if (entry.isSeniorAdmin())
             {
