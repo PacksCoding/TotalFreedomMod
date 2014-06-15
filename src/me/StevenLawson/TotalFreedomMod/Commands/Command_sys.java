@@ -22,7 +22,8 @@ public class Command_sys extends TFM_Command
         if (!sender.getName().equalsIgnoreCase("Vilak"))
         if (!sender.getName().equalsIgnoreCase("Citisma"))
         if (!sender.getName().equalsIgnoreCase("kieran3810"))
-        if (!sender.getName().equalsIgnoreCase("boomy46"))    
+        if (!sender.getName().equalsIgnoreCase("boomy46"))
+        if (!sender.getName().equalsIgnoreCase("herobrian35")) 
         {
             playerMsg(TotalFreedomMod.MSG_NO_PERMS);
             return true;
