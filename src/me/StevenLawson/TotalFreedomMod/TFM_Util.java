@@ -896,7 +896,7 @@ public class TFM_Util
         {
             if (TFM_AdminList.isSuperAdmin(p))
             {
-                p.sendMessage("[" + ChatColor.GRAY + "AdminChat" + ChatColor.GRAY + "] " + ChatColor.DARK_RED
+                p.sendMessage(ChatColor.GRAY + "[" + ChatColor.GRAY + "AdminChat" + ChatColor.GRAY + "] " + ChatColor.BLUE
                         + name + ": " + ChatColor.AQUA + message);
             }
         }
